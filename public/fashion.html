@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Categories</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #38A2D7, #561139);
+      color: white;
+    }
+
+    .navbar { background-color: #0e197d; }
+    .navbar-brand { font-size: 1.75rem; font-weight: bold; color: #fff !important; }
+    .navbar-nav .nav-link { color: #fff !important; font-size: 1.1rem; }
+    .navbar-toggler { border-color: #fff; }
+
+    .category-card {
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background-color: #fff;
+      color: black;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .category-card h5 { font-size: 1.25rem; font-weight: bold; }
+    .rating { color: #ffc107; }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .lowest-price { color: #28a745; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="pc.html">PriceSPY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="pc.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="appliances.html">Appliances</a></li>
+          <li class="nav-item"><a class="nav-link active" href="mobiles.html">Mobiles</a></li>
+          <li class="nav-item"><a class="nav-link active" href="furnitures.html">Furnitures</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-12 text-center mb-4">
+        <h1>Fashion Categories</h1>
+        <p>Select from a variety of fashion categories to explore the latest trends.</p>
+      </div>
+    </div>
+
+    <div class="row" id="products">
+      <!-- Placeholder for products populated by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript for Price Comparison -->
+  <script>
+    // Product data with prices on Amazon, Flipkart, and eBay
+    const products = [
+      {
+        id: 'mshirt',
+        name: "Men's Shirt",
+        description: "CB-COLEBROOK Men's Casual Button Down Long Sleeve Linen Shirt.",
+        image: 'images/Mshirt.jpeg',
+        prices: { amazon: 499, flipkart: 520, ebay: 510 },
+        rating: 4.3
+      },
+      {
+        id: 'wshirt',
+        name: "Women's Shirt",
+        description: "GRECIILOOKS Shirt for Women | Long Sleeve Shirts for Women.",
+        image: 'images/Wshirt.jpeg',
+        prices: { amazon: 349, flipkart: 359, ebay: 355 },
+        rating: 4.5
+      },
+      {
+        id: 'kurti',
+        name: "Kurta Set",
+        description: "GRECIILOOKS Kurta Set with Dupatta | Regular Fit.",
+        image: 'images/kurti.jpeg',
+        prices: { amazon: 599, flipkart: 620, ebay: 615 },
+        rating: 4.2
+      },
+      {
+        id: 'pants',
+        name: "Formal Pants",
+        description: "Park Avenue Men's Regular Fit Solid Pattern Poly Viscose Pants.",
+        image: 'images/pant.jpeg',
+        prices: { amazon: 829, flipkart: 840, ebay: 835 },
+        rating: 4.4
+      },
+      {
+        id: 'saree',
+        name: "Ethnic Wear Saree",
+        description: "Women's Banarasi Soft Silk Kanchipuram Pattu Sarees With Blouse.",
+        image: 'images/saree.jpeg',
+        prices: { amazon: 1089, flipkart: 1100, ebay: 1095 },
+        rating: 4.6
+      },
+      {
+        id: 'dress',
+        name: "Western Dress",
+        description: "Women's White Cotton Ethnic Motifs Flared Western Dress.",
+        image: 'images/western.jpeg',
+        prices: { amazon: 529, flipkart: 540, ebay: 535 },
+        rating: 4.1
+      }
+    ];
+
+    // Function to render products and highlight the lowest price
+    function renderProducts() {
+      const container = document.getElementById('products');
+      products.forEach(product => {
+        // Determine lowest price and source
+        const { amazon, flipkart, ebay } = product.prices;
+        const minPrice = Math.min(amazon, flipkart, ebay);
+        let lowestSource = 'Amazon';
+        
+        if (minPrice === flipkart) lowestSource = 'Flipkart';
+        else if (minPrice === ebay) lowestSource = 'eBay';
+
+        // HTML structure for each product card
+        container.innerHTML += `
+          <div class="col-md-4">
+            <div class="category-card">
+              <img src="${product.image}" alt="${product.name}">
+              <h5>${product.name}</h5>
+              <p>${product.description}</p>
+              <p class="price" id="price-${product.id}-amazon">Amazon: ₹${amazon}</p>
+              <p class="price" id="price-${product.id}-flipkart">Flipkart: ₹${flipkart}</p>
+              <p class="price" id="price-${product.id}-ebay">eBay: ₹${ebay}</p>
+              <p class="lowest-price">Lowest Price: ${lowestSource} ₹${minPrice}</p>
+              <p class="rating">Rating: ★★★★☆ (${product.rating}/5)</p>
+              <div class="buy-links">
+                <p><strong>Buy from:</strong></p>
+                <a href="https://www.amazon.in/s?k=${product.name.replace(/ /g, '+')}" target="_blank">Amazon</a> |
+                <a href="https://www.flipkart.com/search?q=${product.name.replace(/ /g, '+')}" target="_blank">Flipkart</a> |
+                <a href="https://www.ebay.com/sch/i.html?_nkw=${product.name.replace(/ /g, '+')}" target="_blank">eBay</a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Render products on page load
+    renderProducts();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furniture Categories</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #38A2D7, #561139);
+      color: white;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #0e197d;
+    }
+
+    .navbar-brand {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-size: 1.1rem;
+    }
+
+    .navbar-toggler {
+      border-color: #fff;
+    }
+
+    /* Category Styles */
+    .category-card {
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background-color: #fff;
+      color: black;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .category-card h5 {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    /* Customer rating stars */
+    .rating {
+      color: #ffc107;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    /* Links */
+    .product-links a {
+      display: inline-block;
+      color: #0d6efd;
+      text-decoration: underline;
+      margin-right: 10px;
+    }
+
+    .product-links a:hover {
+      text-decoration: underline;
+    }
+
+    .product-links p {
+      display: inline;
+      font-weight: bold;
+    }
+
+    /* Lowest price style */
+    .lowest-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff5733;
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="pc.html">PriceSPY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="pc.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appliances.html">Appliances</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fashion.html">Fashion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mobiles.html">Mobiles</a>
+          </li>
+        </ul>
+      
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-12 text-center mb-4">
+        <h1>Furniture Categories</h1>
+        <p>Explore various furniture categories for your home.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Living Room Furniture -->
+      <div class="col-md-4">
+        <div class="category-card">
+          <img src="images/sofa.jpeg" alt="sofa">
+          <h5>3 Seater Sofa</h5>
+          <p>NEUDOT Saya Fabric 3 Seater Sofa (Finish Color - Saya Teal).</p>
+          <p class="price">Price: ₹9,999</p>
+          <div class="rating">
+            <span>⭐⭐⭐⭐☆</span> (4.2/5)
+          </div>
+          <div class="product-links">
+            <p>Buy from:</p>
+            <a href="https://www.amazon.in/dp/B0BJDGG5LF" target="_blank">Amazon</a>
+            <a href="https://www.flipkart.com/neudot-saya-fabric-3-seater-sofa/p/itm3f599aabb0d7d" target="_blank">Flipkart</a>
+            <a href="https://www.ebay.com/itm/394364605178" target="_blank">eBay</a>
+          </div>
+          <p class="lowest-price">Lowest Price: ₹9,799 (eBay)</p>
+        </div>
+      </div>
+
+      <!-- Bedroom Furniture -->
+      <div class="col-md-4">
+        <div class="category-card">
+          <img src="images/wardrobe.jpeg" alt="wardrobe">
+          <h5>Wardrobe</h5>
+          <p>Trevi Mustang Engineered Wood 5 Door Wardrobe.</p>
+          <p class="price">Price: ₹19,999</p>
+          <div class="rating">
+            <span>⭐⭐⭐⭐⭐</span> (4.7/5)
+          </div>
+          <div class="product-links">
+            <p>Buy from:</p>
+            <a href="https://www.amazon.in/dp/B09GDGY29H" target="_blank">Amazon</a>
+            <a href="https://www.flipkart.com/trevi-mustang-engineered-wood-5-door-wardrobe/p/itm1cbf163411524" target="_blank">Flipkart</a>
+            <a href="https://www.ebay.com/itm/353778975993" target="_blank">eBay</a>
+          </div>
+          <p class="lowest-price">Lowest Price: ₹19,499 (Flipkart)</p>
+        </div>
+      </div>
+
+      <!-- Dining Room Furniture -->
+      <div class="col-md-4">
+        <div class="category-card">
+          <img src="images/dining.jpeg" alt="dining table">
+          <h5>Dining Table Set</h5>
+          <p>Mooncraft Solid Wood 6 Seater Dining Set (Walnut Finish).</p>
+          <p class="price">Price: ₹22,999</p>
+          <div class="rating">
+            <span>⭐⭐⭐⭐☆</span> (4.4/5)
+          </div>
+          <div class="product-links">
+            <p>Buy from:</p>
+            <a href="https://www.amazon.in/dp/B08QV2YHSL" target="_blank">Amazon</a>
+            <a href="https://www.flipkart.com/mooncraft-solid-wood-6-seater-dining-set/p/itmf947f8a7ba1c5" target="_blank">Flipkart</a>
+            <a href="https://www.ebay.com/itm/255164713831" target="_blank">eBay</a>
+          </div>
+          <p class="lowest-price">Lowest Price: ₹22,499 (Amazon)</p>
+        </div>
+      </div>
+
+      <!-- Office Furniture -->
+      <div class="col-md-4">
+        <div class="category-card">
+          <img src="images/desk.jpeg" alt="Office desk">
+          <h5>Office Desk</h5>
+          <p>FURNEASER Qualish Computer Table with 3 Shelf, Study Table.</p>
+          <p class="price">Price: ₹3,548</p>
+          <div class="rating">
+            <span>⭐⭐⭐⭐☆</span> (4.3/5)
+          </div>
+          <div class="product-links">
+            <p>Buy from:</p>
+            <a href="https://www.amazon.in/dp/B08KH3CLNX" target="_blank">Amazon</a>
+            <a href="https://www.flipkart.com/furneaser-qualish-study-computer-table/p/itma75831d35bf74" target="_blank">Flipkart</a>
+            <a href="https://www.ebay.com/itm/393895217324" target="_blank">eBay</a>
+          </div>
+          <p class="lowest-price">Lowest Price: ₹3,499 (Flipkart)</p>
+        </div>
+      </div>
+
+      <!-- Outdoor Furniture -->
+      <div class="col-md-4">
+        <div class="category-card">
+          <img src="images/patio.jpeg" alt="patio set">
+          <h5>Patio Set</h5>
+          <p>WildMonk Cane Table & Chair Set (Finish Color - Beige, Pre-assembled).</p>
+          <p class="price">Price: ₹7,819</p>
+          <div class="rating">
+            <span>⭐⭐⭐⭐☆</span> (4.5/5)
+          </div>
+          <div class="product-links">
+            <p>Buy from:</p>
+            <a href="https://www.amazon.in/dp/B09CQNH8HG" target="_blank">Amazon</a>
+            <a href="https://www.flipkart.com/wildmonk-cane-patio-set/p/itm4b9a545a56852" target="_blank">Flipkart</a>
+            <a href="https://www.ebay.com/itm/144386218177" target="_blank">eBay</a>
+          </div>
+          <p class="lowest-price">Lowest Price: ₹7,599 (Amazon)</p>
+        </div>
+      </div>
+
+      <!-- Storage Furniture -->
+      <div class="col-md-4">
+        <div class="category-card">
+          <img src="images/bed.jpeg" alt="bed">
+          <h5>Wooden Bed</h5>
+          <p>WoodEnjoy Sheesham Wood Bed/ Cot Bed/ Palang for Bedroom.</p>
+          <p class="price">Price: ₹30,778</p>
+          <div class="rating">
+            <span>⭐⭐⭐⭐☆</span> (4.1/5)
+          </div>
+          <div class="product-links">
+            <p>Buy from:</p>
+            <a href="https://www.amazon.in/dp/B08QV3FNK2" target="_blank">Amazon</a>
+            <a href="https://www.flipkart.com/woodenjoy-sheesham-wood-bed/p/itm18c0fc4b6c0c9" target="_blank">Flipkart</a>
+            <a href="https://www.ebay.com/itm/265075180710" target="_blank">eBay</a>
+          </div>
+          <p class="lowest-price">Lowest Price: ₹30,499 (Flipkart)</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

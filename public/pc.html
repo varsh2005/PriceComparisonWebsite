@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Price Comparison Website - Special Offers</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #38A2D7, #561139);
+      min-height: 100vh;
+    }
+
+    /* Navbar Styles */
+    .navbar-custom {
+      background-color: #0e197d; /* Dark Blue */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .navbar-custom .navbar-brand {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #fff !important;
+    }
+    .navbar-custom .navbar-nav .nav-link {
+      color: #fff !important;
+      font-size: 1.1rem;
+      margin-right: 15px;
+    }
+    .navbar-custom .navbar-nav .nav-link:hover {
+      background-color: #0e197d;
+      color: #fff !important;
+      border-radius: 5px;
+    }
+    .navbar-custom .navbar-toggler {
+      border-color: #fff;
+    }
+    .navbar-custom .navbar-toggler-icon {
+      background-color: lightgrey;
+    }
+
+    /* Auth buttons */
+    .navbar-custom .btn-login {
+      background: linear-gradient(45deg, #17a2b8, #138496); /* Teal gradient */
+      color: white;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .navbar-custom .btn-login:hover {
+      background: linear-gradient(45deg, #138496, #17a2b8);
+      text-decoration: none;
+      color: white;
+    }
+
+    .navbar-custom .btn-logout {
+      background-color: #dc3545; /* Bootstrap danger color */
+      color: white;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .navbar-custom .btn-logout:hover {
+      background-color: #c82333;
+      text-decoration: none;
+      color: white;
+    }
+
+    /* Secondary Bar (for product comparison) */
+    .secondary-bar {
+      background-color:  #0e197d; /* Blue gradient to match the site */
+      padding: 15px 0;
+      border-bottom: 2px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    .secondary-bar h5 {
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .secondary-bar .compare-item a {
+      background-color: #ffffff;
+      color: #0e197d; /* Matching the dark blue from the navbar */
+      padding: 10px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .secondary-bar .compare-item a:hover {
+      background-color: #0e197d;
+      color: #fff;
+    }
+
+    /* Product card styles */
+    .product-card {
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .special-offer {
+      color: #ff0000;
+      font-weight: bold;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Filters section */
+    .search-box {
+      margin-bottom: 20px;
+    }
+
+    /* Grid for items */
+    .grid-item {
+      margin: 15px 0;
+    }
+
+    /* Ratings styles */
+    .rating {
+      color: #ffc107;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="pc.html">PriceSPY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto" id="auth-links">
+          <!-- Auth links will be injected here by JavaScript -->
+          <li class="nav-item">
+            <a class="btn btn-login" href="login.html">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Secondary Bar for Comparison -->
+  <div class="secondary-bar">
+    <div class="container">
+      <h5>Select Products to Compare:</h5>
+      <span class="compare-item"><a href="appliances.html">Appliances</a></span>
+      <span class="compare-item"><a href="fashion.html">Fashion</a></span>
+      <span class="compare-item"><a href="mobiles.html">Mobiles</a></span>
+      <span class="compare-item"><a href="furnitures.html">Furnitures</a></span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <!-- Search Box -->
+    <div class="search-box">
+      <input type="text" class="form-control" id="product-search" placeholder="Search products...">
+    </div>
+
+    <!-- Special Offer Product Cards -->
+    <div class="row">
+      <div class="col-md-4 grid-item">
+        <div class="product-card" data-name="Samsung Galaxy">
+          <img src="images/SG.jpeg" alt="Samsung Galaxy">
+          <h5>Samsung Galaxy</h5>
+          <p>High-performance Android smartphone.</p>
+          <p class="special-offer">Special Offer: -55% ₹20,499</p>
+          <p>Price: ₹20,499</p>
+          <p class="rating">Rating: ★★★★☆</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 grid-item">
+        <div class="product-card" data-name="Leather Sofa Set">
+          <img src="images/leatherSofa.jpeg" alt="Leather Sofa Set">
+          <h5>Leather Sofa Set</h5>
+          <p>Comfortable and stylish sofa set.</p>
+          <p class="special-offer">Special Offer: -53% ₹33,164</p>
+          <p>Price: ₹33,164</p>
+          <p class="rating">Rating: ★★★★☆</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 grid-item">
+        <div class="product-card" data-name="Evening Dress">
+          <img src="images/dress.jpeg" alt="Evening Dress">
+          <h5>Evening Dress</h5>
+          <p>Elegant fashion for special occasions</p>
+          <p class="special-offer">Special Offer: -70% ₹759</p>
+          <p>Price: ₹759</p>
+          <p class="rating">Rating: ★★★★☆</p>
+        </div>
+      </div>
+    </div> <!-- End of row -->
+  </div> <!-- End of container -->
+
+  <!-- Bootstrap JS and Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Check if the user is logged in by fetching session data from the backend
+    fetch('/check-session')
+      .then(response => response.json())
+      .then(data => {
+        const authLinks = document.getElementById('auth-links');
+        
+        if (data.loggedIn) {
+          // If logged in, show email and Logout button
+          authLinks.innerHTML = `
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link text-white me-2" href="/profile">${data.email}</a>
+              <a class="btn btn-logout" href="/logout">Logout</a>
+            </li>
+          `;
+        } else {
+          // Otherwise, show Signup/Login button
+          authLinks.innerHTML = `
+            <li class="nav-item">
+              <a class="btn btn-login" href="login.html">Signup/Login</a>
+            </li>
+          `;
+        }
+      })
+      .catch(error => console.error('Error:', error));
+
+    // Search functionality for products
+    document.getElementById('product-search').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const productCards = document.querySelectorAll('.product-card');
+
+      productCards.forEach(card => {
+        const productName = card.getAttribute('data-name').toLowerCase();
+        if (productName.includes(query)) {
+          card.parentElement.style.display = 'block'; // Show matching product
+        } else {
+          card.parentElement.style.display = 'none'; // Hide non-matching product
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>

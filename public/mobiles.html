@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Brands</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #38A2D7, #561139);
+      color: white;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #0e197d;
+    }
+
+    .navbar-brand {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-size: 1.1rem;
+    }
+
+    .navbar-toggler {
+      border-color: #fff;
+    }
+
+    /* Category Styles */
+    .category-card {
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background-color: #fff;
+      color: black;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .category-card h5 {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .rating {
+      color: #ffc107;
+    }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .lowest-price {
+      color: #28a745;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="pc.html">PriceSPY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="pc.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appliances.html">Appliances</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fashion.html">Fashion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="furnitures.html">Furnitures</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-12 text-center mb-4">
+        <h1>Mobile Brands</h1>
+        <p>Explore the top mobile brands from Android to iPhone and more.</p>
+      </div>
+    </div>
+
+    <div class="row" id="products">
+      <!-- Placeholder for product cards populated by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript to Fetch and Display Lowest Prices -->
+  <script>
+    // Mock price data for each product and platform
+    const products = [
+      {
+        name: "iPhone 13",
+        description: "Apple iPhone 13 (128GB) - Pink.",
+        prices: { amazon: 42999, flipkart: 41999, ebay: 43000 },
+        rating: 4.8,
+        image: 'images/iphone.jpeg'
+      },
+      {
+        name: "Samsung Galaxy A15",
+        description: "Galaxy A15 (8GB RAM).",
+        prices: { amazon: 16999, flipkart: 17499, ebay: 16900 },
+        rating: 4.5,
+        image: 'images/samsung.jpeg'
+      },
+      {
+        name: "Google Pixel 9",
+        description: "Google Pixel 9 (Obsidian, 12 GB RAM).",
+        prices: { amazon: 79999, flipkart: 77999, ebay: 78999 },
+        rating: 4.6,
+        image: 'images/google.jpeg'
+      },
+      {
+        name: "OnePlus Nord CE4",
+        description: "OnePlus Nord CE4 8GB RAM 128GB Storage.",
+        prices: { amazon: 23499, flipkart: 22999, ebay: 23500 },
+        rating: 4.4,
+        image: 'images/oneplus.jpeg'
+      },
+      {
+        name: "Xiaomi 14",
+        description: "Xiaomi 14 (Black, 12GB RAM, 512 GB Storage).",
+        prices: { amazon: 47999, flipkart: 46999, ebay: 47500 },
+        rating: 4.3,
+        image: 'images/xiaomi.jpeg'
+      },
+      {
+        name: "Huawei HONOR 200 5G",
+        description: "HONOR 200 5G (Black, 8GB + 256GB).",
+        prices: { amazon: 26998, flipkart: 26499, ebay: 27000 },
+        rating: 4.4,
+        image: 'images/honor.jpeg'
+      }
+    ];
+
+    // Function to render products and highlight the lowest price
+    function renderProducts() {
+      const container = document.getElementById('products');
+      products.forEach(product => {
+        const { amazon, flipkart, ebay } = product.prices;
+        const minPrice = Math.min(amazon, flipkart, ebay);
+        let lowestSource = 'Amazon';
+        
+        if (minPrice === flipkart) lowestSource = 'Flipkart';
+        else if (minPrice === ebay) lowestSource = 'eBay';
+
+        // HTML structure for each product card
+        container.innerHTML += `
+          <div class="col-md-4">
+            <div class="category-card">
+              <img src="${product.image}" alt="${product.name}">
+              <h5>${product.name}</h5>
+              <p>${product.description}</p>
+              <p class="price">Amazon: ₹${amazon}</p>
+              <p class="price">Flipkart: ₹${flipkart}</p>
+              <p class="price">eBay: ₹${ebay}</p>
+              <p class="lowest-price">Lowest Price: ${lowestSource} ₹${minPrice}</p>
+              <p class="rating">Rating: ★★★★☆ (${product.rating}/5)</p>
+              <div class="buy-links">
+                <p><strong>Buy from:</strong></p>
+                <a href="https://www.amazon.in/s?k=${product.name.replace(/ /g, '+')}" target="_blank">Amazon</a> |
+                <a href="https://www.flipkart.com/search?q=${product.name.replace(/ /g, '+')}" target="_blank">Flipkart</a> |
+                <a href="https://www.ebay.com/sch/i.html?_nkw=${product.name.replace(/ /g, '+')}" target="_blank">eBay</a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Render products on page load
+    renderProducts();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Appliance Categories</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #38A2D7, #561139);
+      color: white;
+    }
+    .navbar { background-color: #0e197d; }
+    .navbar-brand { font-size: 1.75rem; font-weight: bold; color: #fff !important; }
+    .navbar-nav .nav-link { color: #fff !important; font-size: 1.1rem; }
+    .navbar-toggler { border-color: #fff; }
+    .category-card { box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); border-radius: 10px; background-color: #fff; color: black; padding: 20px; margin-bottom: 20px; text-align: center; }
+    .category-card img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px; }
+    .category-card h5 { font-size: 1.25rem; font-weight: bold; }
+    .rating { color: #ffc107; }
+    .price { font-size: 1.1rem; font-weight: bold; }
+    .lowest-price { color: #28a745; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="pc.html">PriceSPY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="appliances.html">Home Appliances</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mobiles.html">Mobiles
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fashion.html">Fashion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="furnitures.html">Furniture</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-12 text-center mb-4">
+        <h1>Home Appliance Categories</h1>
+        <p>Explore a wide range of home appliances to make your life easier.</p>
+      </div>
+    </div>
+
+    <div class="row" id="products">
+      <!-- Placeholder for products populated by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Bootstrap and JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript to Fetch and Compare Prices -->
+  <script>
+    // Mock price data for each product and platform
+    const products = [
+      {
+        id: 'oven',
+        name: "AGARO Marvel 9L Oven",
+        description: "Toaster Griller, Cake Baking, Grilling, Toasting, OTG, 800 Watts.",
+        image: 'images/oven.jpeg',
+        prices: { amazon: 1699, flipkart: 1720, ebay: 1700 },
+        rating: 4.2
+      },
+      {
+        id: 'fridge',
+        name: "Whirlpool Double Door Refrigerator",
+        description: "Whirlpool Double Door 235 Litres 2 Star Refrigerator.",
+        image: 'images/fridge.jpeg',
+        prices: { amazon: 23990, flipkart: 24200, ebay: 23850 },
+        rating: 4.5
+      },
+      {
+        id: 'washingMachine',
+        name: "Samsung 7 kg Top Load Washing Machine",
+        description: "Centre jet pulsator, diamond drum, and magic filter.",
+        image: 'images/washingMachine.jpeg',
+        prices: { amazon: 15290, flipkart: 15500, ebay: 15350 },
+        rating: 4.4
+      },
+      {
+        id: 'mixie',
+        name: "Crompton 500-Watt Mixer Grinder",
+        description: "With powertron motor, 3 Stainless steel jars, black and grey.",
+        image: 'images/mixie.jpeg',
+        prices: { amazon: 1799, flipkart: 1820, ebay: 1750 },
+        rating: 4.3
+      },
+      {
+        id: 'tv',
+        name: "Xiaomi Smart TV (43 inches)",
+        description: "Xiaomi 108 cm X Pro 4K Dolby Vision IQ series smart google TV L43M8-5XIN (Black).",
+        image: 'images/TV.jpeg',
+        prices: { amazon: 30989, flipkart: 31200, ebay: 30800 },
+        rating: 4.7
+      },
+      {
+        id: 'ac',
+        name: "Lloyd 1.5 Ton 3 Star Inverter Split AC (5 in 1)",
+        description: "Convertible, Copper, Anti-Viral + PM 2.5 Filter, 2023 Model.",
+        image: 'images/AC.jpeg',
+        prices: { amazon: 33490, flipkart: 33700, ebay: 33250 },
+        rating: 4.6
+      }
+    ];
+
+    // Function to render products and highlight the lowest price
+    function renderProducts() {
+      const container = document.getElementById('products');
+      products.forEach(product => {
+        const { amazon, flipkart, ebay } = product.prices;
+        const minPrice = Math.min(amazon, flipkart, ebay);
+        let lowestSource = 'Amazon';
+        
+        if (minPrice === flipkart) lowestSource = 'Flipkart';
+        else if (minPrice === ebay) lowestSource = 'eBay';
+
+        // HTML structure for each product card
+        container.innerHTML += `
+          <div class="col-md-4">
+            <div class="category-card">
+              <img src="${product.image}" alt="${product.name}">
+              <h5>${product.name}</h5>
+              <p>${product.description}</p>
+              <p class="price" id="price-${product.id}-amazon">Amazon: ₹${amazon}</p>
+              <p class="price" id="price-${product.id}-flipkart">Flipkart: ₹${flipkart}</p>
+              <p class="price" id="price-${product.id}-ebay">eBay: ₹${ebay}</p>
+              <p class="lowest-price">Lowest Price: ${lowestSource} ₹${minPrice}</p>
+              <p class="rating">Rating: ★★★★☆ (${product.rating}/5)</p>
+              <div class="buy-links">
+                <p><strong>Buy from:</strong></p>
+                <a href="https://www.amazon.in/s?k=${product.name.replace(/ /g, '+')}" target="_blank">Amazon</a> |
+                <a href="https://www.flipkart.com/search?q=${product.name.replace(/ /g, '+')}" target="_blank">Flipkart</a> |
+                <a href="https://www.ebay.com/sch/i.html?_nkw=${product.name.replace(/ /g, '+')}" target="_blank">eBay</a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Render products on page load
+    renderProducts();
+  </script>
+
+</body>
+</html>
